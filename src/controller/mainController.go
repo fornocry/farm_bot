@@ -14,13 +14,8 @@ type MainControllerImpl struct {
 }
 
 func (u MainControllerImpl) Start(b *gotgbot.Bot, ctx *ext.Context) error {
-	_, err := ctx.EffectiveMessage.Reply(b, fmt.Sprintf("Hello, I'm @%s. I <b>repeat</b> all your messages.", b.User.Username), &gotgbot.SendMessageOpts{
+	_, err := ctx.EffectiveMessage.Reply(b, fmt.Sprintf("<b>Welcome to Farm⭐️ \n\n Start growing asap! Press start!</b>", b.User.Username), &gotgbot.SendMessageOpts{
 		ParseMode: "html",
-		ReplyMarkup: gotgbot.InlineKeyboardMarkup{
-			InlineKeyboard: [][]gotgbot.InlineKeyboardButton{{
-				{Text: "Press me", CallbackData: "start_callback"},
-			}},
-		},
 	})
 	if err != nil {
 		return fmt.Errorf("failed to send start message: %w", err)
